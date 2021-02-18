@@ -47,9 +47,9 @@
         <el-input-number :min="0" v-model="courseInfo.lessonNum" controls-position="right" placeholder="请填写课程的总课时数"/>
       </el-form-item>
 
-      <!-- 课程简介 TODO -->
+      <!-- 课程简介-->
       <el-form-item label="课程简介">
-        <el-input v-model="courseInfo.description" placeholder=" 示例：机器学习项目课：从基础到搭建项目视频课程。专业名称注意大小写"/>
+        <tinymce :height="300" v-model="courseInfo.description"/>
       </el-form-item>
 
       <!-- 课程封面-->
@@ -80,9 +80,12 @@
 
 <script>
 import course from '@/api/teacher/course'
-import subject from "@/api/teacher/subject";
+import subject from "@/api/teacher/subject"
+import Tinymce from  '@/components/Tinymce' // 引入组件
 
 export default {
+  // 声明组件
+  components: { Tinymce },
   data() {
     return {
       saveBtnDisabled: false,
@@ -169,5 +172,7 @@ export default {
 </script>
 
 <style scoped>
-
+.tinymce-container {
+  line-height: 29px;
+}
 </style>
